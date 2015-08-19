@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     println(url)
     AuthService.exchangeCodeInURL(url)
     
+//    I will need to get rid of the segue below if I use notification center instead
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       if segue.identifier == "showMainMenu" {
         let destinationVC = segue.destinationViewController as! MenuTableViewController

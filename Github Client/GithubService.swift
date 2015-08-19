@@ -10,22 +10,9 @@ import Foundation
 
 class GithubService {
   
-//  static let sharedService = GithubService()
-//  
-//  var account: ACAccount?
-//  
-//  private init() {}
-  
   class func repositoriesForSearchTerm(searchTerm:(String?, [Repository]?) -> (Void)) {
-    
-//    let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: NSURL (string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!, parameters: nil)
-//    request.account = self.sharedService.account
-//    
 
-//   NSURLSession.account = self.sharedService.account
-    
-    
-    let baseURL = "http://localhost:3000"
+    let baseURL = "https://api.github.com/search/repositories"
     let finalURL = baseURL + "?q=\(searchTerm)"
     if let url = NSURL(string:finalURL) {
             
