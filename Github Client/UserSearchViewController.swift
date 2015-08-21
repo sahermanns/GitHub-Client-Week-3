@@ -17,7 +17,6 @@ class UserSearchViewController: UIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
   
-//  var fetchResult : PHFetchResult!
   let cellSize = CGSize(width: 100, height: 100)
   var desiredFinalImageSize : CGSize!
   var startingScale : CGFloat = 0
@@ -30,6 +29,25 @@ class UserSearchViewController: UIViewController {
 
       searchBar.delegate = self
       
+    }
+    override func viewWillAppear(animated: Bool) {
+      super.viewWillAppear(animated)
+      navigationController?.delegate = self
+      
+    }
+    override func viewWillDisappear(animated: Bool) {
+      super.viewWillDisappear(animated)
+      navigationController?.delegate = nil
+    }
+  
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      if segue.identifier == "ShowUserDetail" {
+        if let destination = segue.destinationViewController as? UserDetailViewController,
+          indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {
+            let user = users[indexPath.row]
+            destination.selectedUser = user
+        }
+      }
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,10 +70,16 @@ extension UserSearchViewController: UISearchBarDelegate {
       }
     })
   }
+  
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    
+    return text.validateForURL()
+    
+  }
 }
 
 //MARK: CollectionView data source functionality
-extension UserSearchViewController: UICollectionViewDataSource {
+extension UserSearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return users.count
   }
@@ -63,6 +87,10 @@ extension UserSearchViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("UserCell", forIndexPath: indexPath) as! UserCell
     var user = users[indexPath.row]
     cell.imageView.image = nil
+    cell.alpha = 0
+    
+    cell.tag++
+    let tag = cell.tag
     
     if let userImage = user.userImage {
       cell.imageView.image = userImage
@@ -86,7 +114,14 @@ extension UserSearchViewController: UICollectionViewDataSource {
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
               user.userImage = resizedImage
               self.users[indexPath.row] = user
-              cell.imageView.image = resizedImage
+              if cell.tag == tag {
+                cell.imageView.image = resizedImage
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                  cell.alpha = 1
+                })
+              }
+              
             })
         }
       })
@@ -95,5 +130,15 @@ extension UserSearchViewController: UICollectionViewDataSource {
     return cell
     }
   }
+
+//MARK: navigation controller as delegate
+extension UserSearchViewController : UINavigationControllerDelegate {
+  func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+    
+    return toVC is UserDetailViewController ? ToUserDetailAnimationController() : nil
+    
+  }
+}
 
 

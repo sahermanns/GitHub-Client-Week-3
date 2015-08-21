@@ -291,6 +291,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="55W-jp-uLs" id="BkY-Uc-cC9"/>
+                                            <segue destination="FEV-mz-idj" kind="show" identifier="ShowUserDetail" id="WcV-SI-2sP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -319,6 +320,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKt-fX-Dfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1916" y="1043"/>
+        </scene>
+        <!--User Detail View Controller-->
+        <scene sceneID="9za-y8-0QF">
+            <objects>
+                <viewController id="FEV-mz-idj" customClass="UserDetailViewController" customModule="Github_Client" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xQW-YQ-e5B"/>
+                        <viewControllerLayoutGuide type="bottom" id="OEO-qF-n7P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DI5-pV-LRc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8VE-GX-4dZ">
+                                <rect key="frame" x="210" y="72" width="180" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="2eX-a4-BPz"/>
+                                    <constraint firstAttribute="height" constant="200" id="RwU-U4-6P7"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8VE-GX-4dZ" firstAttribute="top" secondItem="xQW-YQ-e5B" secondAttribute="bottom" constant="8" id="EOe-Bu-Aqk"/>
+                            <constraint firstAttribute="centerX" secondItem="8VE-GX-4dZ" secondAttribute="centerX" id="GQW-ao-TaL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="8VE-GX-4dZ" id="L7x-dZ-DKx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uD9-Ms-P2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2617" y="1043"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NMB-9K-7l8">

@@ -49,6 +49,11 @@ extension RepositoryViewController: UISearchBarDelegate {
     })
   }
   
+  func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    
+    return text.validateForURL()
+    
+  }
 }
 
 
