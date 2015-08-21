@@ -11,6 +11,5 @@ import Foundation
 struct Repository {
   let name: String
   let htmlURL: String
-  let login: String
-  let avatarURL: String
+  let login: String 
 }

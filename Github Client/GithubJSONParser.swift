@@ -22,7 +22,7 @@ class GithubJSONParser {
             login = owner["login"] as? String,
             avatarURL = owner["avatar_url"] as? String {
             
-              let repository = Repository(name: name, htmlURL: htmlURL, login: login, avatarURL: avatarURL)
+              let repository = Repository(name: name, htmlURL: htmlURL, login: login)
               
               repositories.append(repository)
           } else {
@@ -32,6 +32,33 @@ class GithubJSONParser {
       }
 
       return repositories
+    }
+    if let error = error {
+      
+    }
+    return nil
+  }
+  
+  class func usersFromJSONData(jsonData: NSData) -> [User]? {
+    
+    var error : NSError?
+    if let rootObject = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: &error) as? [String:AnyObject]{
+      var users = [User]()
+      if let items = rootObject["items"] as? [[String: AnyObject]] {
+        for repositoryObject in items {
+          if let login = repositoryObject["login"] as? String,
+            avatarURL = repositoryObject["avatar_url"] as? String {
+              
+              let user = User(login: login, avatarURL: avatarURL, userImage: nil)
+              
+              users.append(user)
+          } else {
+            //          could not enter parsing loop
+          }
+        }
+      }
+      
+      return users
     }
     if let error = error {
       

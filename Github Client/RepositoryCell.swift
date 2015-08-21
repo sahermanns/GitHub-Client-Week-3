@@ -10,8 +10,6 @@ import UIKit
 
 class RepositoryCell: UITableViewCell {
   
-  @IBOutlet weak var avatarImage: UIImageView!
-  
   @IBOutlet weak var loginName: UILabel!
   
   @IBOutlet weak var repositoryName: UILabel!

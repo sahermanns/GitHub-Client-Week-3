@@ -18,12 +18,4 @@ class MenuTableViewController: UITableViewController {
       }
     }
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "ShowRepositories" {
-      let destinationVC = segue.destinationViewController as! RepositoryViewController
-      let indexPath = self.tableView.indexPathForSelectedRow()
-      
-    }
-  }
-  
 }

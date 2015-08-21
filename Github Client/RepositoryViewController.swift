@@ -37,35 +37,16 @@ class RepositoryViewController: UIViewController {
 //MARK: Search bar extension
 extension RepositoryViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+
     
-//    AuthService.performInitialRequest{(errorDescription, account) -> (Void) in
-//      if let errorDescription = errorDescription {
-//        
-//      }
-//      if let account = account {
-//        GithubService.repositoriesForSearchTerm { (errorDescription, repositories) -> (Void) in
-//          if let repositories = repositories {
-//            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//              self.repositories = repositories
-//              self.repositoryTableView.reloadData()
-//            })
-//          }
-//        }
-//      }
-//
-//        
-//      }
-//      
-//    }
-    
-    GithubService.repositoriesForSearchTerm { (errorDescription, repositories) -> (Void) in
+    GithubService.repositoriesForSearchTerm(searchBar.text, repoSearchCallBack: { (errorDescription, repositories) -> (Void) in
       if let repositories = repositories {
         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
           self.repositories = repositories
           self.repositoryTableView.reloadData()
         })
       }
-    }
+    })
   }
   
 }
@@ -82,7 +63,6 @@ extension RepositoryViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("RepositoryCell", forIndexPath: indexPath) as! RepositoryCell
     var repository = repositories[indexPath.row]
-    cell.avatarImage.image = nil
     cell.loginName.text = repository.login
     cell.repositoryName.text = repository.name
     cell.repositoryURL.text = repository.htmlURL

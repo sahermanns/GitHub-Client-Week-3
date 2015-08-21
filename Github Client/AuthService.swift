@@ -29,7 +29,9 @@ class AuthService {
             token = rootObject["access_token"] as? String {
             KeychainService.saveToken(token)
               
-//            this is where I will add my notification center
+              NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                NSNotificationCenter.defaultCenter().postNotificationName(kTokenNotification, object: nil)
+              })
           }
         }
       }).resume()
