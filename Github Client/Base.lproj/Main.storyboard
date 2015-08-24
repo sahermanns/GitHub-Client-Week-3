@@ -343,21 +343,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8VE-GX-4dZ">
-                                <rect key="frame" x="210" y="72" width="180" height="200"/>
+                                <rect key="frame" x="210" y="145" width="180" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="2eX-a4-BPz"/>
-                                    <constraint firstAttribute="height" constant="200" id="RwU-U4-6P7"/>
+                                    <constraint firstAttribute="width" constant="180" id="g7n-G4-hEZ"/>
+                                    <constraint firstAttribute="height" constant="200" id="kd7-FQ-t7I"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoginName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-7C-FwN">
+                                <rect key="frame" x="16" y="353" width="568" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8VE-GX-4dZ" firstAttribute="top" secondItem="xQW-YQ-e5B" secondAttribute="bottom" constant="8" id="EOe-Bu-Aqk"/>
-                            <constraint firstAttribute="centerX" secondItem="8VE-GX-4dZ" secondAttribute="centerX" id="GQW-ao-TaL"/>
+                            <constraint firstItem="rHM-7C-FwN" firstAttribute="top" secondItem="8VE-GX-4dZ" secondAttribute="bottom" constant="8" id="8Qj-ax-drr"/>
+                            <constraint firstItem="rHM-7C-FwN" firstAttribute="leading" secondItem="DI5-pV-LRc" secondAttribute="leadingMargin" id="NIF-Qg-791"/>
+                            <constraint firstAttribute="centerX" secondItem="8VE-GX-4dZ" secondAttribute="centerX" id="PF0-I9-5Ae"/>
+                            <constraint firstItem="rHM-7C-FwN" firstAttribute="trailing" secondItem="DI5-pV-LRc" secondAttribute="trailingMargin" id="YRp-uY-fN0"/>
+                            <constraint firstItem="8VE-GX-4dZ" firstAttribute="top" secondItem="xQW-YQ-e5B" secondAttribute="bottom" constant="81" id="iAT-iq-XX3"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="8VE-GX-4dZ" id="L7x-dZ-DKx"/>
+                        <outlet property="userName" destination="rHM-7C-FwN" id="6qR-sD-9Z4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uD9-Ms-P2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
