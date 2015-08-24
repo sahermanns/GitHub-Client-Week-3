@@ -217,7 +217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3BH-AZ-ZAD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3BH-AZ-ZAD">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -225,12 +225,21 @@
                                     <outlet property="delegate" destination="maQ-dj-2sC" id="kpP-ID-A61"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ps8-nM-eBa">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ps8-nM-eBa">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="3BH-AZ-ZAD" secondAttribute="bottom" constant="-64" id="6mq-4Y-lSz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ps8-nM-eBa" secondAttribute="trailing" constant="-16" id="CNe-YR-1wD"/>
+                            <constraint firstItem="Ps8-nM-eBa" firstAttribute="top" secondItem="Gms-QU-ckW" secondAttribute="bottom" constant="8" id="DZk-dN-fDF"/>
+                            <constraint firstItem="3BH-AZ-ZAD" firstAttribute="top" secondItem="Gms-QU-ckW" secondAttribute="bottom" id="G8l-OG-HVJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3BH-AZ-ZAD" secondAttribute="trailing" constant="-16" id="QB8-Yx-n7D"/>
+                            <constraint firstItem="Ps8-nM-eBa" firstAttribute="leading" secondItem="qPc-mk-r2k" secondAttribute="leadingMargin" constant="-16" id="oaF-qg-nHl"/>
+                            <constraint firstItem="3BH-AZ-ZAD" firstAttribute="leading" secondItem="qPc-mk-r2k" secondAttribute="leadingMargin" constant="-16" id="zqY-hl-Aiw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="repositoryTableView" destination="3BH-AZ-ZAD" id="sZB-xH-DRi"/>
