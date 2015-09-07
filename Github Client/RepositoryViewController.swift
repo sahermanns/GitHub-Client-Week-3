@@ -32,6 +32,14 @@ class RepositoryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    if let webViewController = segue.destinationViewController as? WebViewController, indexPath = repositoryTableView.indexPathForSelectedRow() {
+      let repository = repositories[indexPath.row]
+      webViewController.passedURL = repository.htmlURL
+    }
+  }
 
 }
 //MARK: Search bar extension
@@ -59,6 +67,10 @@ extension RepositoryViewController: UISearchBarDelegate {
 
 //MARK: table view extensions
 extension RepositoryViewController: UITableViewDataSource, UITableViewDelegate {
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    performSegueWithIdentifier("ShowWebView", sender: nil)
+  }
 
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

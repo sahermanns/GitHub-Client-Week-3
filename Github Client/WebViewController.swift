@@ -10,13 +10,16 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController {
+  
+   var passedURL: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
       let webView = WKWebView(frame: view.frame)
+      view.addSubview(webView)
       
-      let urlRequest = NSURLRequest(URL: NSURL(string: "https://api.github.com/search/repositories")!)
+      let urlRequest = NSURLRequest(URL: NSURL(string: passedURL)!)
       webView.loadRequest(urlRequest)
       
     }
